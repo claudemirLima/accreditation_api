@@ -1,19 +1,23 @@
 package com.accreditation.dto;
 
 import com.accreditation.type.AccreditationType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
-public class AccreditationDTO {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class AccreditationDTO implements Serializable {
 
     @NotNull
     @JsonProperty("user_id")
@@ -31,7 +35,7 @@ public class AccreditationDTO {
     @JsonProperty("accreditation_type")
     @ApiModelProperty(notes = "Type of accreditation is required")
     private AccreditationType accreditationType;
-
+    @Builder
     public AccreditationDTO(UUID id,UUID userID,DocumentDTO document,  AccreditationType accreditationType) {
         this.id = id;
         this.userID = userID;

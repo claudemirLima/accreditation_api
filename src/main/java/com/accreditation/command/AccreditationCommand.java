@@ -11,11 +11,12 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.UUID;
 
-
-@Setter
 @Getter
+@Setter
+@ToString
+@EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AccreditationCommand extends AbstractCommand implements Serializable {
+public class AccreditationCommand extends AbstractCommand {
 
     public AccreditationDTO accreditation;
 

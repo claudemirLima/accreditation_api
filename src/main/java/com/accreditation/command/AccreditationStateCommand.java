@@ -14,7 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AccreditationStateCommand extends AbstractCommand implements Serializable {
+public class AccreditationStateCommand extends AbstractCommand  {
 
     private UUID id;
 

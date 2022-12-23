@@ -11,11 +11,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.persistence.Entity;
 import javax.sql.DataSource;
 
+@EnableKafka
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.accreditation.repository")
 @EntityScan("com.accreditation.domain")
