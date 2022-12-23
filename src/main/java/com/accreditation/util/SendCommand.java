@@ -39,21 +39,6 @@ public class SendCommand {
                 .commandStatus(commandStatus)
                 .accreditation(accreditationDTO).build();
 
-//        String json = null;
-//        try {
-//            json = (new ObjectMapper()).writeValueAsString(accreditationDTO);
-//
-//            MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(json)
-//                    .setHeader("kafka_topic", topicAccreditation)
-//                    .setHeader("eventName", "AccreditationStatusCommand")
-//                    .setHeader("x-timestamp", Instant.now()
-//                            .toString()).setHeader("guid", command.getTaskId().toString());
-//            template.send(topicAccreditation,messageBuilder.build());
-//
-//        } catch (JsonProcessingException e) {
-//            e.printStackTrace();
-//        }
-
 
         Message<AccreditationCommand> message = MessageBuilder
                 .withPayload(command)
