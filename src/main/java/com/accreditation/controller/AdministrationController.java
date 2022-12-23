@@ -24,17 +24,17 @@ public class AdministrationController {
     private AccreditationService accreditationService;
 
     @ApiOperation(value = "Accreditation status finalization.", httpMethod = "PUT", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiResponses({ @ApiResponse(code = 202, message = "The request has been received and the transaction will be processed"),
+    @ApiResponses({ @ApiResponse(code = 201, message = "The request has been received and the transaction will be processed"),
             @ApiResponse(code = 204, message = "No result for this accreditation"),
             @ApiResponse(code = 400, message = "One or more attributes is invalid"),
             @ApiResponse(code = 412, message = "Precondition Failed"),
             @ApiResponse(code = 500, message = "Internal Server Error ")})
-    @ResponseStatus(ACCEPTED)
+    @ResponseStatus(OK)
     @PutMapping("/accreditation/{accreditationId}")
     public ResponseEntity confirmed(@PathVariable(name = "accreditationId") UUID accreditationId){
         var result = accreditationService.confirmed(accreditationId);
         if(result.isPresent())
-            return ResponseEntity.accepted().body(result.get());
+            return ResponseEntity.ok().body(result.get());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No Content result for this ID");
     }
 
@@ -45,11 +45,11 @@ public class AdministrationController {
             @ApiResponse(code = 412, message = "Precondition Failed"),
             @ApiResponse(code = 500, message = "Internal Server Error ")})
     @ResponseStatus(OK)
-    @PutMapping("/accreditation/{accreditationId}")
+    @PutMapping("/accreditation/expire/{accreditationId}")
     public ResponseEntity expired(@PathVariable(name = "accreditationId") UUID accreditationId){
         var result = accreditationService.expired(accreditationId);
         if(result.isPresent())
-            return ResponseEntity.accepted().body(result.get());
+            return ResponseEntity.ok().body(result.get());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No Content result for this ID");
     }
 

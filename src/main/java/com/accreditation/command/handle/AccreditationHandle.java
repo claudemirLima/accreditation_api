@@ -21,7 +21,7 @@ public class AccreditationHandle {
 
     @KafkaListener(
             topics = "${kafka.topic.accreditation.status.command}"
-            , groupId = "${spring.kafka.consumer_group_id}"
+            , groupId = "${spring.kafka.consumer.group-id}"
             , containerFactory = "kafkaListenerContainerFactory")
     public void handle(@Payload AccreditationCommand accreditationCommand, @Headers MessageHeaders messageHeaders){
 

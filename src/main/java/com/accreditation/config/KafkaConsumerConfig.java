@@ -22,10 +22,10 @@ import static org.apache.kafka.clients.consumer.ConsumerConfig.*;
 @Configuration
 public class KafkaConsumerConfig {
 
-    @Value("${spring.kafka.consumer.bootstrap.server}")
+    @Value("${spring.kafka.consumer.bootstrap-servers}")
     private String bootstrapServers;
 
-    @Value("${spring.kafka.consumer_group_id}")
+    @Value("${spring.kafka.consumer.group-id}")
     protected String groupId;
 
     public ConsumerFactory<String, Object> consumerFactory() {

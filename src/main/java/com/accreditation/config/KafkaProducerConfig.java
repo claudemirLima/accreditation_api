@@ -17,7 +17,7 @@ public class KafkaProducerConfig {
     @Autowired
     private KafkaProperties kafkaProperties;
 
-    @Value("${spring.kafka.consumer.bootstrap.server}")
+    @Value("${spring.kafka.producer.bootstrap-servers}")
     private String bootstrapServers;
 
     @Bean
