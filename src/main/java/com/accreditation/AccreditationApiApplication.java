@@ -12,6 +12,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.persistence.Entity;
@@ -22,6 +23,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "com.accreditation.repository")
 @EntityScan("com.accreditation.domain")
 @EnableWebMvc
+@EnableScheduling
 public class AccreditationApiApplication {
 
 	@Bean

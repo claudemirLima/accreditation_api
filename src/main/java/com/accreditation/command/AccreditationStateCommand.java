@@ -14,6 +14,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class AccreditationStateCommand extends AbstractCommand  {
 
     private UUID id;

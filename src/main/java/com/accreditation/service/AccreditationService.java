@@ -58,7 +58,7 @@ public class AccreditationService {
         var saved = accreditationRepository.save(accreditation);
 
         sendCommand.sendCommandAccreditation(accreditationDTO,CommandStatus.CONFIRMED);
-        sendCommand.sendCommandAccreditationStatusChange(accreditationDTO.getId(), CommandStatus.CONFIRMED,AccreditationStatus.PENDING);
+        sendCommand.sendCommandAccreditationStatusChange(accreditation.getId(), CommandStatus.CONFIRMED,AccreditationStatus.PENDING);
 
         return saved;
     }
@@ -93,7 +93,9 @@ public class AccreditationService {
        if(accreditationStory != null && !accreditationStory.isEmpty()){
            var last = accreditationStory.get(accreditationStory.size() -1);
                 if(AccreditationStatus.FAILED.equals(last.getStatus()) ||
-                        AccreditationStatus.EXPIRED.equals(last.getStatus())){
+                        AccreditationStatus.EXPIRED.equals(last.getStatus()) ||
+                        AccreditationStatus.CONFIRMED.equals(last.getStatus())
+                ){
                     sendCommand.sendCommandAccreditationStatusChange(accreditationId,CommandStatus.FAILED,AccreditationStatus.CONFIRMED);
                     return Optional.of(last.getStatus());
                }else {

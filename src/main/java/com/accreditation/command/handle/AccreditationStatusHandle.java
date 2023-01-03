@@ -20,7 +20,7 @@ public class AccreditationStatusHandle {
     private ApplicationEventPublisher applicationEventPublisher;
 
     @KafkaListener(
-            topics = "${kafka.topic.accreditation.command}"
+            topics = "${kafka.topic.accreditation.status.command}"
             , groupId = "${spring.kafka.consumer.group-id}"
             , containerFactory = "kafkaListenerContainerFactory")
     public void handle(@Payload AccreditationStateCommand accreditationCommand, @Headers MessageHeaders messageHeaders){

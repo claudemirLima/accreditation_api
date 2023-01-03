@@ -43,14 +43,15 @@ public class SendCommand {
         Message<AccreditationCommand> message = MessageBuilder
                 .withPayload(command)
                 .setHeader(KafkaHeaders.TOPIC, topicAccreditation)
-                .setHeader("eventName", "AccreditationStatusCommand")
+                .setHeader("eventName", "CreateAccreditationCommand")
                 .build();
-        template.send(topicAccreditation,command);
+        template.send(message);
 
     }
 
     public void sendCommandAccreditationStatusChange(UUID accreditationID, CommandStatus commandStatus, AccreditationStatus accreditationStatus) {
         var command = AccreditationStateCommand.builder()
+                .id(accreditationID)
                 .taskId(UUID.randomUUID())
                 .commandStatus(commandStatus)
                 .accreditationStatus(accreditationStatus).build();
@@ -58,9 +59,9 @@ public class SendCommand {
         Message<AccreditationStateCommand> message = MessageBuilder
                 .withPayload(command)
                 .setHeader(KafkaHeaders.TOPIC, topicAccreditationStatus)
-                .setHeader("eventName", "CreateAccreditationCommand")
+                .setHeader("eventName", "AccreditationStatusCommand")
                 .build();
 
-        template.send(topicAccreditationStatus,command);
+        template.send(message);
     }
 }

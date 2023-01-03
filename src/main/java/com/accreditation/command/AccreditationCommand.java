@@ -15,6 +15,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AccreditationCommand extends AbstractCommand {
 

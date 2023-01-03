@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -16,6 +13,7 @@ import java.util.UUID;
 @Data
 @Builder
 @NoArgsConstructor
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AccreditationDTO implements Serializable {
 

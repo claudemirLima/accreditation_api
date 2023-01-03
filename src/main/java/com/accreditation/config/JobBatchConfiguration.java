@@ -51,6 +51,7 @@ public class JobBatchConfiguration {
         Job job = jobBuilderFactory.get("job1")
                 .listener(jobExecutionListener)
                 .flow(step)
+
                 .end()
                 .build();
         return job;
