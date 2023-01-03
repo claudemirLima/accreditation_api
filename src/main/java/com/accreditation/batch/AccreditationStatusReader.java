@@ -24,7 +24,7 @@ public class AccreditationStatusReader implements ItemReader<AccreditationStory>
 
     @BeforeStep
     public void before(StepExecution stepExecution) {
-        accreditationStoryIterator = accreditationStoryRepository.findAccreditationOutOfDate(LocalDate.now()).iterator();
+        accreditationStoryIterator = accreditationStoryRepository.findAccreditationOutOfDate(LocalDate.now().minusDays(30)).iterator();
     }
 
     @Override

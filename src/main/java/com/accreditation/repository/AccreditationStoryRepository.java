@@ -17,7 +17,7 @@ public interface AccreditationStoryRepository extends JpaRepository<Accreditatio
     List<AccreditationStory> findByAccreditationID(String accreditationId);
 
     @Query(value = "SELECT\n" +
-            "            EXT \n" +
+            "            EXT.* \n" +
             "        FROM\n" +
             "            ACCREDITATION_STORY EXT \n" +
             "        INNER JOIN\n" +
@@ -33,6 +33,6 @@ public interface AccreditationStoryRepository extends JpaRepository<Accreditatio
             "                    ACCREDITATION_ID  = EXT.ACCREDITATION_ID\n" +
             "            )         \n" +
             "            AND EXT.REQUEST_STATE = 'PENDING'\n" +
-            "            AND EXT.REQUEST_DATE >= :localDate",nativeQuery = true)
+            "            AND EXT.REQUEST_DATE <= :localDate",nativeQuery = true)
     List<AccreditationStory> findAccreditationOutOfDate(LocalDate localDate);
 }
